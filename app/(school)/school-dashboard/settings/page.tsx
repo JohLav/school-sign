@@ -21,12 +21,10 @@ export default function SchoolSettings() {
           <div className="flex justify-between items-center">
             <div>
               <h1 className="text-2xl font-bold tracking-tight">Settings</h1>
-              <p className="text-muted-foreground">
-                Manage your account.
-              </p>
+              <p className="text-muted-foreground">Manage your account.</p>
             </div>
           </div>
-        <Separator />
+          <Separator />
         </div>
         <div className="flex flex-col w-36 gap-5">
           <Button className="bg-purple text-seasame" variant="outline">

@@ -170,7 +170,12 @@ export default function ClassWithSignatures() {
     return `${hours}:${minutes}`;
   };
 
-  if (loading) return <p className="h-full w-full flex items-center justify-center">Loading...</p>;
+  if (loading)
+    return (
+      <p className="h-full w-full flex items-center justify-center">
+        Loading...
+      </p>
+    );
 
   return (
     <>
@@ -214,12 +219,16 @@ export default function ClassWithSignatures() {
               ) : null;
             })
           ) : (
-            <p className="h-full w-full flex items-center justify-center">No ongoing lesson.</p>
+            <p className="h-full w-full flex items-center justify-center">
+              No ongoing lesson.
+            </p>
           )}
           {error && <p className="text-red-500">{error}</p>}
         </div>
       ) : (
-        <p className="h-full w-full flex items-center justify-center">No class found.</p>
+        <p className="h-full w-full flex items-center justify-center">
+          No class found.
+        </p>
       )}
     </>
   );

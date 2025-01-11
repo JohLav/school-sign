@@ -20,7 +20,7 @@ export default function StudentDashboard() {
   const { fetchLessons } = useFetchLessons(
     studentClassId,
     setLessons,
-    setError
+    setError,
   );
   const { fetchSignatures } = useFetchSignatures(setSignatures, setError);
   const [currentDateTime, setCurrentDateTime] = useState<Date>(new Date());
@@ -87,7 +87,7 @@ export default function StudentDashboard() {
         (signature) =>
           signature.lessonId === currentLessonId &&
           signature.userId ===
-            (studentId !== null ? studentId.toString() : undefined) // Convert studentId to string
+            (studentId !== null ? studentId.toString() : undefined), // Convert studentId to string
       )
     : [];
 

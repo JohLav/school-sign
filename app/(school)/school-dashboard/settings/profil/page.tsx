@@ -59,7 +59,7 @@ export default function SchoolDetails() {
         } else {
           const errorData = await res.json();
           setError(
-            errorData.error || "An error occurred while fetching the student"
+            errorData.error || "An error occurred while fetching the student",
           );
           setLoading(false);
         }
@@ -78,13 +78,15 @@ export default function SchoolDetails() {
       <div className="space-y-0.5 py-8">
         <h1 className="text-2xl font-bold tracking-tight">School</h1>
         <p className="text-muted-foreground">Informations.</p>
-      <Separator />
+        <Separator />
       </div>
       <div className="flex flex-col items-center justify-center  gap-6 mt-10">
         {error && <p className="text-red-500">{error}</p>}
 
         {loading ? (
-          <p className="h-full w-full flex items-center justify-center">Loading...</p>
+          <p className="h-full w-full flex items-center justify-center">
+            Loading...
+          </p>
         ) : (
           <>
             {school ? (
@@ -122,14 +124,18 @@ export default function SchoolDetails() {
                   </CardContent>
                 </div>
                 <Link
-                    className="absolute right-0 top-0 p-3"
-                    href={`/school-dashboard/settings/profil/update`}
-                  >
-                    <button><ModifyIcon/></button>
-                  </Link>
+                  className="absolute right-0 top-0 p-3"
+                  href={`/school-dashboard/settings/profil/update`}
+                >
+                  <button>
+                    <ModifyIcon />
+                  </button>
+                </Link>
               </Card>
             ) : (
-              <p className="h-full w-full flex items-center justify-center">No student found with this ID.</p>
+              <p className="h-full w-full flex items-center justify-center">
+                No student found with this ID.
+              </p>
             )}
           </>
         )}

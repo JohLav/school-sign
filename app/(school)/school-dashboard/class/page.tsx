@@ -36,7 +36,7 @@ export default function ClassList() {
         } else {
           const errorData = await res.json();
           setError(
-            errorData.error || "An error occurred while fetching classes"
+            errorData.error || "An error occurred while fetching classes",
           );
         }
       } catch (err) {

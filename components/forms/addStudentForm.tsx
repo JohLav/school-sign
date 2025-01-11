@@ -75,7 +75,9 @@ export default function AddStudentForm() {
 
   const getClassId = () => {
     if (classData.length > 0) {
-      const classSection = classData.find((cls) => cls.schoolId === userSchoolId);
+      const classSection = classData.find(
+        (cls) => cls.schoolId === userSchoolId,
+      );
       return classSection ? classSection.id : "Class not found";
     }
     return null;
@@ -139,7 +141,9 @@ export default function AddStudentForm() {
     <div className="flex items-center justify-center">
       <Card className="w-96 mt-10">
         <CardHeader>
-          <CardTitle className="text-center">Please add required informations</CardTitle>
+          <CardTitle className="text-center">
+            Please add required informations
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit}>
