@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import Link from "next/link";
-import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { ModifyIcon } from "@/components/icons/ModifyIcon";
 
@@ -69,60 +69,51 @@ export default function SchoolDetails() {
   }, [schoolId]);
 
   return (
-      <>
-        <div className="px-10 pb-16">
-          <h1 className="text-2xl font-bold tracking-tight">Settings</h1>
-          <p className="text-muted-foreground">Manage your account.</p>
-          <Separator/>
-        </div>
-        <div className="flex flex-col items-center justify-center  gap-6 mt-10">
-          {error && <p className="text-red-500">{error}</p>}
+    <>
+      <div className="px-10 pb-16">
+        <h1 className="text-2xl font-bold tracking-tight">Settings</h1>
+        <p className="text-muted-foreground">Manage your account.</p>
+        <Separator />
+      </div>
+      <div className="flex flex-col items-center justify-center  gap-6 mt-10">
+        {error && <p className="text-red-500">{error}</p>}
 
-          {loading ? (
+        {loading ? (
+          <p className="h-full w-full flex items-center justify-center">
+            Loading...
+          </p>
+        ) : (
+          <>
+            {school ? (
+              <div className="sm:w-full md:w-auto">
+                <Card className="relative m-10">
+                  <CardHeader>
+                    <CardTitle>School informations</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="flex mb-2">Establishment: {school.name}</p>
+                    <p className="flex mb-2">Address: {school.address}</p>
+                    <p className="flex mb-2">Zipcode: {school.zipcode}</p>
+                    <p className="flex mb-2">City: {school.city}</p>
+                    <Link
+                      className="absolute right-0 top-0 p-3"
+                      href={`/school-dashboard/settings/profil/update`}
+                    >
+                      <button>
+                        <ModifyIcon />
+                      </button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              </div>
+            ) : (
               <p className="h-full w-full flex items-center justify-center">
-                Loading...
+                No school found with this ID.
               </p>
-          ) : (
-              <>
-                {school ? (
-                    <div className="sm:w-full md:w-auto">
-
-                      <Card className="relative m-10">
-                        <CardHeader>
-                          <CardTitle>School informations</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="flex mb-2">
-                            Establishment: {school.name}
-                          </p>
-                          <p className="flex mb-2">
-                            Address: {school.address}
-                          </p>
-                          <p className="flex mb-2">
-                            Zipcode: {school.zipcode}
-                          </p>
-                          <p className="flex mb-2">
-                            City: {school.city}
-                          </p>
-                          <Link
-                              className="absolute right-0 top-0 p-3"
-                              href={`/school-dashboard/settings/profil/update`}
-                          >
-                            <button>
-                              <ModifyIcon/>
-                            </button>
-                          </Link>
-                        </CardContent>
-                      </Card>
-                    </div>
-                ) : (
-                    <p className="h-full w-full flex items-center justify-center">
-                      No school found with this ID.
-                    </p>
-                )}
-              </>
-          )}
-        </div>
-      </>
+            )}
+          </>
+        )}
+      </div>
+    </>
   );
 }

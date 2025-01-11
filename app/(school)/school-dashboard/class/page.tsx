@@ -61,9 +61,7 @@ export default function ClassList() {
         {error && <p className="text-red-500">{error}</p>}
 
         {loading ? (
-          <p className="flex items-center justify-center">
-            Loading...
-          </p>
+          <p className="flex items-center justify-center">Loading...</p>
         ) : classData.length > 0 ? (
           <div>
             <ul>

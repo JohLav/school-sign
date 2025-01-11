@@ -19,9 +19,7 @@ export default function SchoolLayout({
         <nav>
           <SchoolNavBar />
         </nav>
-        <main className="w-full scroll py-8 md:pr-10">
-          {children}
-        </main>
+        <main className="w-full scroll py-8 md:pr-10">{children}</main>
         <Toaster />
       </ClassProvider>
     </div>

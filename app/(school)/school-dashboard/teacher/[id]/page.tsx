@@ -11,7 +11,7 @@ import Link from "next/link";
 import SelectMenu from "@/components/SelectMenu";
 
 // ui
-import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Separator } from "@/components/ui/separator";
@@ -175,53 +175,45 @@ export default function StudentDetails({
                     <CardTitle>Credentials</CardTitle>
                   </CardHeader>
                   <CardContent>
-                  <p className="flex mb-2">
-                    Firstname: {teacher.firstname}
-                  </p>
-                  <p className="flex mb-2">
-                    Lastname: {teacher.lastname}
-                  </p>
-                  <p className="mb-2">
-                    Email: {teacher.email}
-                  </p>
-                  {teacher?.classId ? (
-                    <p>
-                      Assigned Class:
-                      <Link
-                        href={`/school-dashboard/class/${className}/student/`}
-                      >
-                        {getClassName()}
-                      </Link>
-                    </p>
-                  ) : (
-                    <>
-                      <SelectMenu
-                        selected={selectedClass}
-                        setSelected={setSelectedClass}
-                        options={classData}
-                        displayValue={(classSection) => classSection.name}
-                        label="Select a Class"
-                      />
-                      <Button onClick={handleUpdate} className="mt-4">
-                        Update
-                      </Button>
-                    </>
-                  )}
-                  <Link
-                    className="absolute right-0 top-0 p-3"
-                    href={`/school-dashboard/teacher//${teacher.id}/update`}
-                  >
-                    <button>
-                      <ModifyIcon />
-                    </button>
-                  </Link>
+                    <p className="flex mb-2">Firstname: {teacher.firstname}</p>
+                    <p className="flex mb-2">Lastname: {teacher.lastname}</p>
+                    <p className="mb-2">Email: {teacher.email}</p>
+                    {teacher?.classId ? (
+                      <p>
+                        Assigned Class:
+                        <Link
+                          href={`/school-dashboard/class/${className}/student/`}
+                        >
+                          {getClassName()}
+                        </Link>
+                      </p>
+                    ) : (
+                      <>
+                        <SelectMenu
+                          selected={selectedClass}
+                          setSelected={setSelectedClass}
+                          options={classData}
+                          displayValue={(classSection) => classSection.name}
+                          label="Select a Class"
+                        />
+                        <Button onClick={handleUpdate} className="mt-4">
+                          Update
+                        </Button>
+                      </>
+                    )}
+                    <Link
+                      className="absolute right-0 top-0 p-3"
+                      href={`/school-dashboard/teacher//${teacher.id}/update`}
+                    >
+                      <button>
+                        <ModifyIcon />
+                      </button>
+                    </Link>
                   </CardContent>
                 </Card>
               </div>
             ) : (
-              <p>
-                No teacher found with this ID.
-              </p>
+              <p>No teacher found with this ID.</p>
             )}
           </>
         )}

@@ -14,7 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import React from "react";
-import {Role} from "@prisma/client";
+import { Role } from "@prisma/client";
 
 interface Signature {
   userId: string;
