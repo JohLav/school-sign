@@ -14,6 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import React from "react";
+import {Role} from "@prisma/client";
 
 interface Signature {
   userId: string;
@@ -296,17 +297,17 @@ export default function AttendanceSheet() {
           <SelectValue placeholder="Select a class" />
         </SelectTrigger>
         <SelectContent>
-          {/* <SelectGroup>
+          <SelectGroup>
             {classes.map((classItem) => (
-              <SelectItem key={classItem.id} value={classItem.id}>
+              <SelectItem key={classItem.id} value={classItem.id.toString()}>
                 {classItem.name}
               </SelectItem>
             ))}
-          </SelectGroup> */}
+          </SelectGroup>
         </SelectContent>
       </Select>
       {students
-        .filter((student) => student.role === "STUDENT")
+        .filter((student) => student.role === Role.STUDENT)
         .map((student, index) => (
           <div key={index} className="flex space-x-2">
             <Input

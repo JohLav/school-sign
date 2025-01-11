@@ -41,6 +41,7 @@ npx prisma generate
 ```
 npx prisma db seed
 ```
+
 <small>In case you need a complete database reset (drop db, create db, apply all migrations and generate prisma client): https://www.basedash.com/blog/how-to-reset-and-seed-a-prisma-database</small>
 
 - To show the School Sign application window with your current build:
