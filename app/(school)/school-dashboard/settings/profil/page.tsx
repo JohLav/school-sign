@@ -1,13 +1,8 @@
 "use client";
 
-// react
 import { useState, useEffect } from "react";
 import React from "react";
-
-// next
 import Link from "next/link";
-
-// ui
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { ModifyIcon } from "@/components/icons/ModifyIcon";
@@ -134,7 +129,7 @@ export default function SchoolDetails() {
               </Card>
             ) : (
               <p className="h-full w-full flex items-center justify-center">
-                No student found with this ID.
+                No school found with this ID.
               </p>
             )}
           </>

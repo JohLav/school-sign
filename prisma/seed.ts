@@ -18,7 +18,7 @@ async function main() {
             email: "alice.johnson@springfield.edu",
             password: "Securepassword@1",
             role: Role.SCHOOL,
-          }
+          },
         ],
       },
     },
@@ -73,25 +73,25 @@ async function main() {
     },
   });
 
-  const school5 = await prisma.school.create({
-    data: {
-      name: "Lakeside High School",
-      address: "789 Lakeview Rd",
-      zipcode: "54321",
-      city: "Riverside",
-      users: {
-        create: [
-          {
-            firstname: "Jane",
-            lastname: "Doe",
-            email: "jane.doe@lakeside.edu",
-            password: "SecurePass123%",
-            role: Role.SCHOOL,
-          },
-        ],
-      },
-    },
-  });
+  // const school5 = await prisma.school.create({
+  //   data: {
+  //     name: "Lakeside High School",
+  //     address: "789 Lakeview Rd",
+  //     zipcode: "54321",
+  //     city: "Riverside",
+  //     users: {
+  //       create: [
+  //         {
+  //           firstname: "Jane",
+  //           lastname: "Doe",
+  //           email: "jane.doe@lakeside.edu",
+  //           password: "SecurePass123%",
+  //           role: Role.SCHOOL,
+  //         },
+  //       ],
+  //     },
+  //   },
+  // });
 
   // Create Classsections
   const class1 = await prisma.classsection.create({
@@ -103,31 +103,38 @@ async function main() {
 
   const class2 = await prisma.classsection.create({
     data: {
-      name: "8th Grade",
+      name: "7th Grade",
       schoolId: school2.id,
     },
   });
 
   const class3 = await prisma.classsection.create({
     data: {
-      name: "9th Grade",
+      name: "8th Grade",
       schoolId: school3.id,
     },
   });
 
   const class4 = await prisma.classsection.create({
     data: {
-      name: "10th Grade",
+      name: "9th Grade",
       schoolId: school4.id,
     },
   });
+
+  // const class5 = await prisma.classsection.create({
+  //   data: {
+  //     name: "10th Grade",
+  //     schoolId: school5.id,
+  //   },
+  // });
 
   // Create Users
   const teacher1 = await prisma.user.create({
     data: {
       firstname: "Edna",
       lastname: "Krabappel",
-      email: "edna.krabappel@school1.com",
+      email: "edna.krabappel@springfield.edu",
       password: "Securepassword$0",
       role: Role.TEACHER,
       schoolId: school1.id,
@@ -139,7 +146,7 @@ async function main() {
     data: {
       firstname: "Bart",
       lastname: "Simpson",
-      email: "bart.simpson@school1.com",
+      email: "bart.simpson@springfield.edu",
       password: "Securepassword!2",
       role: Role.STUDENT,
       schoolId: school1.id,
@@ -151,7 +158,7 @@ async function main() {
     data: {
       firstname: "Lisa",
       lastname: "Simpson",
-      email: "lisa.simpson@school1.com",
+      email: "lisa.simpson@springfield.edu",
       password: "Securepassword%3",
       role: Role.STUDENT,
       schoolId: school1.id,
@@ -163,13 +170,97 @@ async function main() {
     data: {
       firstname: "Seymour",
       lastname: "Skinner",
-      email: "seymour.skinner@school2.com",
+      email: "seymour.skinner@shelbyville.edu",
       password: "Securepassword*4",
       role: Role.TEACHER,
       schoolId: school2.id,
       classId: class2.id,
     },
   });
+
+  const student3 = await prisma.user.create({
+    data: {
+      firstname: "Tom",
+      lastname: "Anderson",
+      email: "tom.anderson@shelbyville.edu",
+      password: "Securepassword%90",
+      role: Role.STUDENT,
+      schoolId: school2.id,
+      classId: class2.id,
+    },
+  });
+
+  const teacher3 = await prisma.user.create({
+    data: {
+      firstname: "Charlie",
+      lastname: "Brown",
+      email: "charlie.brown@greenvalley.edu",
+      password: "Securepassword*5",
+      role: Role.TEACHER,
+      schoolId: school3.id,
+      classId: class3.id,
+    },
+  });
+
+  const student4 = await prisma.user.create({
+    data: {
+      firstname: "Emily",
+      lastname: "Clark",
+      email: "emily.clark@greenvalley.edu",
+      password: "Securepassword*%5",
+      role: Role.TEACHER,
+      schoolId: school3.id,
+      classId: class3.id,
+    },
+  });
+
+  const teacher4 = await prisma.user.create({
+    data: {
+      firstname: "Ashley",
+      lastname: "Burlington",
+      email: "ashley.burlington@sunsetacademy.edu",
+      password: "Securepassword!6",
+      role: Role.TEACHER,
+      schoolId: school4.id,
+      classId: class4.id,
+    },
+  });
+
+  const student5 = await prisma.user.create({
+    data: {
+      firstname: "James",
+      lastname: "Miller",
+      email: "james.miller@sunsetacademy.edu",
+      password: "Securepassword!6",
+      role: Role.TEACHER,
+      schoolId: school4.id,
+      classId: class4.id,
+    },
+  });
+
+  // const teacher5 = await prisma.user.create({
+  //   data: {
+  //     firstname: "Jake",
+  //     lastname: "Lennon",
+  //     email: "jake.lennon@lakeside.edu",
+  //     password: "Securepassword$7",
+  //     role: Role.TEACHER,
+  //     schoolId: school5.id,
+  //     classId: class5.id,
+  //   },
+  // });
+  //
+  // const student6 = await prisma.user.create({
+  //   data: {
+  //     firstname: "Sophie",
+  //     lastname: "Turner",
+  //     email: "sophie.turner@lakeside.edu",
+  //     password: "Securepassword$7",
+  //     role: Role.TEACHER,
+  //     schoolId: school5.id,
+  //     classId: class5.id,
+  //   },
+  // });
 
   // Create Lessons
   const lesson1 = await prisma.lesson.create({
@@ -190,6 +281,33 @@ async function main() {
     },
   });
 
+  const lesson3 = await prisma.lesson.create({
+    data: {
+      name: "French Introduction",
+      dateStart: new Date("2025-01-17T10:00:00.000Z"),
+      dateEnd: new Date("2025-01-17T11:30:00.000Z"),
+      classId: class3.id,
+    },
+  });
+
+  const lesson4 = await prisma.lesson.create({
+    data: {
+      name: "Software Starter",
+      dateStart: new Date("2025-01-18T10:00:00.000Z"),
+      dateEnd: new Date("2025-01-18T11:30:00.000Z"),
+      classId: class4.id,
+    },
+  });
+
+  // const lesson5 = await prisma.lesson.create({
+  //   data: {
+  //     name: "English Grammar",
+  //     dateStart: new Date("2025-01-19T10:00:00.000Z"),
+  //     dateEnd: new Date("2025-01-19T11:30:00.000Z"),
+  //     classId: class5.id,
+  //   },
+  // });
+
   // Create Signs
   await prisma.sign.create({
     data: {
@@ -208,6 +326,33 @@ async function main() {
       lessonId: lesson2.id,
     },
   });
+
+  await prisma.sign.create({
+    data: {
+      hashedSign: "hashed_signature_2",
+      date: new Date("2025-01-17T11:00:00.000Z"),
+      userId: student3.id,
+      lessonId: lesson3.id,
+    },
+  });
+
+  await prisma.sign.create({
+    data: {
+      hashedSign: "hashed_signature_2",
+      date: new Date("2025-01-18T11:00:00.000Z"),
+      userId: student4.id,
+      lessonId: lesson4.id,
+    },
+  });
+
+  // await prisma.sign.create({
+  //   data: {
+  //     hashedSign: "hashed_signature_2",
+  //     date: new Date("2025-01-19T11:00:00.000Z"),
+  //     userId: student5.id,
+  //     lessonId: lesson5.id,
+  //   },
+  // });
 
   console.log("Seeding completed!");
 }

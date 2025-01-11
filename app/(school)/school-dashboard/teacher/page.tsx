@@ -56,16 +56,14 @@ export default function TeacherList() {
 
   return (
     <>
-      <div className=" w-full px-10 ">
-        <div className="space-y-0.5 py-8">
-          <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold tracking-tight pb-6">Teachers</h1>
-          </div>
-          <Separator />
+      <div className="w-full px-10 mb-16">
+        <div className="flex justify-between items-center">
+          <h1 className="text-2xl font-bold tracking-tight">Teachers</h1>
         </div>
+        <Separator />
       </div>
 
-      <div className="flex justify-center ">
+      <div className="flex justify-center">
         {error && <p className="text-red-500">{error}</p>}
 
         {loading ? (
@@ -94,7 +92,7 @@ export default function TeacherList() {
             <div className="flex items-center justify-center flex-col gap-4 p-4 md:p-10">
               <Button className="bg-purple text-seasame" variant="outline">
                 <Link href="/school-dashboard/teacher/addTeacher">
-                  Add a new Teacher
+                  Add a Teacher
                 </Link>
               </Button>
             </div>
@@ -107,7 +105,7 @@ export default function TeacherList() {
             <div className="flex items-center justify-center flex-col gap-4 p-4 md:p-10">
               <Button className="bg-purple text-seasame" variant="outline">
                 <Link href="/school-dashboard/teacher/addTeacher">
-                  Add a new Teacher
+                  Add a Teacher
                 </Link>
               </Button>
             </div>

@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 
-// Fonction pour obtenir la date actuelle
 const getCurrentDate = (): string => {
   const now = new Date();
   return now.toLocaleDateString("fr-FR", {
@@ -12,7 +11,6 @@ const getCurrentDate = (): string => {
   });
 };
 
-// Fonction pour obtenir l'heure actuelle formatée
 const getCurrentTime = (): string => {
   const now = new Date();
   const options: Intl.DateTimeFormatOptions = {
@@ -38,10 +36,9 @@ const RealTimeClockWithDate: React.FC = () => {
   }, []);
 
   return (
-    <div className="text-center">
-      <h2>Date Actuelle : {currentDate}</h2>
-      <h2>Heure Actuelle : {currentTime}</h2>
-    </div>
+    <h2 className="text-center">
+      {currentDate} - {currentTime}
+    </h2>
   );
 };
 
