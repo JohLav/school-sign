@@ -18,14 +18,7 @@ async function main() {
             email: "alice.johnson@springfield.edu",
             password: "Securepassword@1",
             role: Role.SCHOOL,
-          },
-          // {
-          //   firstname: "Ashley",
-          //   lastname: "Burlington",
-          //   email: "ashley.burlington@springfield.edu",
-          //   password: "securepassword2",
-          //   role: Role.TEACHER,
-          // }
+          }
         ],
       },
     },
@@ -80,7 +73,7 @@ async function main() {
     },
   });
 
-  const school4 = await prisma.school.create({
+  const school5 = await prisma.school.create({
     data: {
       name: "Lakeside High School",
       address: "789 Lakeview Rd",
@@ -227,139 +220,3 @@ main()
   .finally(async () => {
     await prisma.$disconnect();
   });
-
-// import { PrismaClient, Role } from "@prisma/client";
-//
-// const prisma = new PrismaClient();
-
-// async function main() {
-//   // Seed Schools
-//   const school1 = await prisma.school.create({
-//     data: {
-//       name: "Green Valley High",
-//       address: "123 Main St",
-//       zipcode: "12345",
-//       city: "Sample City",
-//       users: {
-//         create: [
-//           {
-//             firstname: "Alice",
-//             lastname: "Johnson",
-//             email: "alice.johnson@greenvalley.edu",
-//             password: "securepassword1",
-//             role: Role.SCHOOL,
-//           },
-//           {
-//             firstname: "Ashley",
-//             lastname: "Burlington",
-//             email: "ashley.burlington@greenvalley.edu",
-//             password: "securepassword2",
-//             role: Role.TEACHER,
-//           },
-//           {
-//             firstname: "Bob",
-//             lastname: "Smith",
-//             email: "bob.smith@greenvalley.edu",
-//             password: "securepassword3",
-//             role: Role.STUDENT,
-//           },
-//         ],
-//       },
-//       classes: {
-//         create: [
-//           {
-//             name: "Class A",
-//             users: {
-//               // create: [
-//               //     {
-//               //         firstname: 'Charlie',
-//               //         lastname: 'Brown',
-//               //         email: 'charlie.brown@classa.greenvalley.edu',
-//               //         password: 'securepassword3',
-//               //         role: 'STUDENT',
-//               //     },
-//               // ],
-//             },
-//           },
-//         ],
-//       },
-//     },
-//   });
-//
-//   const school2 = await prisma.school.create({
-//     data: {
-//       name: "Blue Mountain Academy",
-//       address: "456 Another St",
-//       zipcode: "67890",
-//       city: "Another City",
-//     },
-//   });
-//
-//   // Seed Lessons
-//   const lesson1 = await prisma.lesson.create({
-//     data: {
-//       name: "Math Lesson 1",
-//       dateStart: new Date("2025-01-01T10:00:00Z"),
-//       dateEnd: new Date("2025-01-01T11:00:00Z"),
-//       class: {
-//         connect: {
-//           id: school1.classes[0]?.id, // Connects to 'Class A' from the first school
-//         },
-//       },
-//     },
-//   });
-//
-//   const lesson2 = await prisma.lesson.create({
-//     data: {
-//       name: "Science Lesson 1",
-//       dateStart: new Date("2025-01-02T10:00:00Z"),
-//       dateEnd: new Date("2025-01-02T11:00:00Z"),
-//     },
-//   });
-//
-//   // Seed Signs
-//   const sign1 = await prisma.sign.create({
-//     data: {
-//       hashedSign: "hashed-signature-1",
-//       date: new Date(),
-//       user: {
-//         connect: {
-//           email: "alice.johnson@greenvalley.edu", // Connect to Alice
-//         },
-//       },
-//       lesson: {
-//         connect: {
-//           id: lesson1.id,
-//         },
-//       },
-//     },
-//   });
-//
-//   const sign2 = await prisma.sign.create({
-//     data: {
-//       hashedSign: "hashed-signature-2",
-//       date: new Date(),
-//       user: {
-//         connect: {
-//           email: "bob.smith@greenvalley.edu", // Connect to Bob
-//         },
-//       },
-//       lesson: {
-//         connect: {
-//           id: lesson2.id,
-//         },
-//       },
-//     },
-//   });
-//
-//   console.log("Seeding completed successfully!");
-// }
-//
-// main()
-//   .catch((e) => {
-//     console.error("Error while seeding:", e);
-//     process.exit(1);
-//   })
-//   .finally(async () => {
-//     await prisma.$disconnect();
-//   });
