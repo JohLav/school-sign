@@ -172,15 +172,13 @@ export default function ClassWithSignatures() {
 
   if (loading)
     return (
-      <p className="h-full w-full flex items-center justify-center">
-        Loading...
-      </p>
+      <p className="w-full flex items-center justify-center">Loading...</p>
     );
 
   return (
     <>
       {classId ? (
-        <div className="flex flex-col items-center pb-20">
+        <div className="flex flex-col items-center">
           {lessons.length > 0 ? (
             lessons.map((lesson) => {
               const startDate = new Date(lesson.dateStart);
@@ -188,7 +186,7 @@ export default function ClassWithSignatures() {
               const lessonIsOngoing = isLessonOngoing(startDate, endDate);
 
               return lessonIsOngoing ? (
-                <div key={lesson.id} className="flex flex-col items-center">
+                <div key={lesson.id} className="">
                   <ClassComponent
                     className={className}
                     lessonName={lesson.name}
@@ -198,6 +196,7 @@ export default function ClassWithSignatures() {
                   />
                   <SignatureActions
                     classId={classId}
+                    className={className}
                     isSignatureAllowed={isSignatureAllowed}
                     allowSignature={allowSignature}
                     disallowSignature={disallowSignature}
@@ -219,16 +218,14 @@ export default function ClassWithSignatures() {
               ) : null;
             })
           ) : (
-            <p className="h-full w-full flex items-center justify-center">
+            <p className="flex items-center justify-center">
               No ongoing lesson.
             </p>
           )}
           {error && <p className="text-red-500">{error}</p>}
         </div>
       ) : (
-        <p className="h-full w-full flex items-center justify-center">
-          No class found.
-        </p>
+        <p className="flex items-center justify-center">No class found.</p>
       )}
     </>
   );

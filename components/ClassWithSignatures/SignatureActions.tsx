@@ -1,5 +1,6 @@
 interface SignatureActionsProps {
   classId: number | null;
+  className: string | null;
   isSignatureAllowed: boolean;
   allowSignature: (classId: number) => void;
   disallowSignature: () => void;
@@ -8,6 +9,7 @@ interface SignatureActionsProps {
 
 export default function SignatureActions({
   classId,
+  className,
   isSignatureAllowed,
   allowSignature,
   disallowSignature,
@@ -58,7 +60,7 @@ export default function SignatureActions({
 
       <p className="mt-4 text-center">
         {isSignatureAllowed
-          ? `Signatures are authorised for the class ${classId}.`
+          ? `Signatures are authorised for the ${className} class.`
           : "Signatures are disabled."}
       </p>
     </div>

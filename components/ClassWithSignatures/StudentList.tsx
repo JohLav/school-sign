@@ -43,7 +43,7 @@ export default function StudentList({
   return (
     <>
       {students?.length ? (
-        <ul className="flex justify-center gap-6 my-10 flex-wrap w-full">
+        <ul className="flex justify-center gap-6 my-10 flex-wrap">
           {students
             .filter((student) => student.role === "STUDENT")
             .map((student) => {
@@ -51,15 +51,15 @@ export default function StudentList({
               return (
                 <li
                   key={student.id}
-                  className="min-h-20 mx-10 sm:w-full md:w-72"
+                  className="min-h-16 sm:mx-5 sm:w-full md:mx-2 md:w-auto"
                 >
-                  <Card className="flex flex-col justify-center items-center h-56 ">
+                  <Card className="flex flex-col">
                     <CardHeader>
                       <CardTitle className="text-center">
-                        {`Firstname : ${student.firstname} `}
+                        Firstname : {student.firstname}
                       </CardTitle>
                       <CardTitle className="text-center">
-                        {`Lastname : ${student.lastname}`}
+                        Lastname : {student.lastname}
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="flex flex-col items-center">
@@ -73,7 +73,7 @@ export default function StudentList({
                           priority
                         />
                       ) : (
-                        <p className=" h-20 min-h-20 w-40 min-w-36 text-center text-red-500 font-light">
+                        <p className="h-20 min-h-20 w-40 min-w-36 text-center text-red-500 font-light">
                           No signature received.
                         </p>
                       )}

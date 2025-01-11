@@ -11,7 +11,6 @@ export default function ClassComponent({
   lessonName,
   startHour,
   endHour,
-  classId,
 }: ClassHeaderProps) {
   return (
     <div className="flex flex-col items-center mb-10">
@@ -19,13 +18,13 @@ export default function ClassComponent({
         {className ? `Class : ${className}` : "Unknown class"}
       </h2>
       <h3
-        className="text-xl 
+        className="text-xl
          mb-1"
       >
         {lessonName ? `Course : ${lessonName}` : "Unknown lesson"}
       </h3>
-      {startHour ? `${startHour}` : "Unknown"} -{" "}
-      {endHour ? `${endHour}` : "Unknown"}
+      {startHour ? `${startHour}` : "Unknown start hour"} -{" "}
+      {endHour ? `${endHour}` : "Unknown end hour"}
     </div>
   );
 }
