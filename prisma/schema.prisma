@@ -23,11 +23,13 @@ model School {
   id      Int    @id @default(autoincrement())
   name    String
   address String
-  zipcode String
+  zipcode String @db.Char(5)
   city    String
 
   users   User[]
   classes Classsection[]
+
+  @@index([name])
 }
 
 model User {
@@ -36,26 +38,31 @@ model User {
   lastname  String? @db.VarChar(255)
   email     String  @unique @db.VarChar(255)
   password  String  @db.VarChar(255)
+  role      Role
 
-  school   School @relation(fields: [schoolId], references: [id])
+  school   School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   schoolId Int
 
-  class   Classsection? @relation(fields: [classId], references: [id])
+  class   Classsection? @relation(fields: [classId], references: [id], onDelete: SetNull)
   classId Int?
 
-  role  Role?
   signs Sign[]
+
+  @@index([schoolId])
+  @@index([classId])
 }
 
 model Classsection {
   id   Int    @id @default(autoincrement())
   name String @db.VarChar(100)
 
-  school   School @relation(fields: [schoolId], references: [id])
+  school   School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   schoolId Int
 
-  users User[]
+  users   User[]
   lessons Lesson[]
+
+  @@index([schoolId])
 }
 
 model Sign {
@@ -63,24 +70,104 @@ model Sign {
   hashedSign String   @db.VarChar(255)
   date       DateTime
   userId     Int
-    lessonId   Int?
-  // docId      Int
+  lessonId   Int?
 
-  user User @relation(fields: [userId], references: [id])
-  lesson Lesson?   @relation(fields: [lessonId], references: [id])
-  // documents   Document @relation(fields: [docId], references: [id])
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lesson Lesson? @relation(fields: [lessonId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([lessonId])
 }
 
 model Lesson {
   id        Int      @id @default(autoincrement())
-  name String @db.VarChar(100)
-  dateStart   DateTime
-  dateEnd     DateTime
-  class   Classsection? @relation(fields: [classId], references: [id])
-  classId Int?
-  
-  signs     Sign[]
- }
+  name      String   @db.VarChar(100)
+  dateStart DateTime
+  dateEnd   DateTime
+
+  class   Classsection @relation(fields: [classId], references: [id], onDelete: Cascade)
+  classId Int
+
+  signs Sign[]
+
+  @@index([classId])
+}
+
+// // START OF ORIGINAL Prisma schema
+// generator client {
+//   provider = "prisma-client-js"
+// }
+//
+// datasource db {
+//   provider = "mysql"
+//   url      = env("DATABASE_URL")
+// }
+//
+// enum Role {
+//   SCHOOL
+//   STUDENT
+//   TEACHER
+// }
+//
+// model School {
+//   id      Int    @id @default(autoincrement())
+//   name    String
+//   address String
+//   zipcode String
+//   city    String
+//
+//   users   User[]
+//   classes Classsection[]
+// }
+//
+// model User {
+//   id        Int     @id @default(autoincrement())
+//   firstname String? @db.VarChar(255)
+//   lastname  String? @db.VarChar(255)
+//   email     String  @unique @db.VarChar(255)
+//   password  String  @db.VarChar(255)
+//
+//   school   School @relation(fields: [schoolId], references: [id])
+//   schoolId Int
+//
+//   class   Classsection? @relation(fields: [classId], references: [id])
+//   classId Int?
+//
+//   role  Role?
+//   signs Sign[]
+// }
+//
+// model Classsection {
+//   id   Int    @id @default(autoincrement())
+//   name String @db.VarChar(100)
+//
+//   school   School @relation(fields: [schoolId], references: [id])
+//   schoolId Int
+//
+//   users   User[]
+//   lessons Lesson[]
+// }
+//
+// model Sign {
+//   id         Int      @id @default(autoincrement())
+//   hashedSign String   @db.VarChar(255)
+//   date       DateTime
+//   userId     Int
+//   lessonId   Int?
+//   user       User     @relation(fields: [userId], references: [id])
+//   lesson     Lesson?  @relation(fields: [lessonId], references: [id])
+// }
+//
+// model Lesson {
+//   id        Int           @id @default(autoincrement())
+//   name      String        @db.VarChar(100)
+//   dateStart DateTime
+//   dateEnd   DateTime
+//   class     Classsection? @relation(fields: [classId], references: [id])
+//   classId   Int?
+//   signs     Sign[]
+// }
+// // END OF ORIGINAL prisma schema
 
 // model ClassSchool {
 //   id        Int      @id @default(autoincrement())

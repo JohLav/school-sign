@@ -40,7 +40,7 @@ export default function TeacherList() {
         } else {
           const errorData = await res.json();
           setError(
-            errorData.error || "An error occurred while fetching teachers"
+            errorData.error || "An error occurred while fetching teachers",
           );
         }
       } catch (err) {

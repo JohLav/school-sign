@@ -82,7 +82,7 @@ export default function UpdateSchoolForm() {
         } else {
           const errorData = await res.json();
           setErrors(
-            errorData.error || "An error occurred while fetching the school"
+            errorData.error || "An error occurred while fetching the school",
           );
         }
       } catch (err) {
@@ -125,11 +125,9 @@ export default function UpdateSchoolForm() {
   return (
     <Card className="w-96">
       <CardHeader>
-        <CardTitle className="text-center">
-          Update form
-        </CardTitle>
+        <CardTitle className="text-center">Update form</CardTitle>
         <CardDescription className="text-center">
-        Please fill out the form to update school&quot;s informations.
+          Please fill out the form to update school&quot;s informations.
         </CardDescription>
       </CardHeader>
       <CardContent>

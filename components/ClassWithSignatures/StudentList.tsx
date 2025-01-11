@@ -35,7 +35,7 @@ export default function StudentList({
 }: StudentListProps) {
   const findSignatureForStudent = (studentId: string) => {
     const signature = signatures.find(
-      (sig) => sig.userId === studentId && sig.lessonId === currentLessonId
+      (sig) => sig.userId === studentId && sig.lessonId === currentLessonId,
     );
     return signature ? signature.hashedSign : null;
   };

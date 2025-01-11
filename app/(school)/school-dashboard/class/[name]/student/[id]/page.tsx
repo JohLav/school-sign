@@ -40,7 +40,7 @@ export default function StudentDetails() {
         } else {
           const errorData = await res.json();
           setError(
-            errorData.error || "An error occurred while fetching the student"
+            errorData.error || "An error occurred while fetching the student",
           );
           setLoading(false);
         }
@@ -64,7 +64,9 @@ export default function StudentDetails() {
         {error && <p className="text-red-500">{error}</p>}
 
         {loading ? (
-          <p className="h-full w-full flex items-center justify-center">Loading...</p>
+          <p className="h-full w-full flex items-center justify-center">
+            Loading...
+          </p>
         ) : (
           <>
             {student ? (
@@ -98,11 +100,15 @@ export default function StudentDetails() {
                   className="absolute right-0 top-0 p-3"
                   href={`/school-dashboard/class/${className}/student/${student.id}/update`}
                 >
-                  <button><ModifyIcon/></button>
+                  <button>
+                    <ModifyIcon />
+                  </button>
                 </Link>
               </Card>
             ) : (
-              <p className="h-full w-full flex items-center justify-center">No student found with this ID.</p>
+              <p className="h-full w-full flex items-center justify-center">
+                No student found with this ID.
+              </p>
             )}
           </>
         )}

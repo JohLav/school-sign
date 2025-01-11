@@ -34,8 +34,8 @@ export default function CalendarTest() {
         const response = await fetch("/api/getClassIdByToken");
         if (response.ok) {
           const data = await response.json();
-          console.log(data, 'DATA');
-          setRole(data.user.role)
+          console.log(data, "DATA");
+          setRole(data.user.role);
           setUserClassId(data.user.classId);
         } else {
           console.error("Error fetching classId");

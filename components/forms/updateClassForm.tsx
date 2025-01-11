@@ -57,7 +57,7 @@ export default function UpdateClassForm() {
         } else {
           const errorData = await res.json();
           setError(
-            errorData.error || "An error occurred while fetching teachers"
+            errorData.error || "An error occurred while fetching teachers",
           );
         }
       } catch (err) {
@@ -72,7 +72,7 @@ export default function UpdateClassForm() {
   const getClassId = () => {
     if (classData.length > 0) {
       const classSection = classData.find(
-        (cls) => cls.schoolId === userSchoolId
+        (cls) => cls.schoolId === userSchoolId,
       );
       return classSection ? classSection.id : "Class not found";
     }
@@ -101,7 +101,7 @@ export default function UpdateClassForm() {
         } else {
           const errorData = await res.json();
           setError(
-            errorData.error || "An error occurred while fetching classes"
+            errorData.error || "An error occurred while fetching classes",
           );
         }
       } catch (err) {

@@ -48,4 +48,6 @@ export const registerSchemaSchool = z.object({
     ),
   schoolId: z.number().optional(),
   role: z.enum(["STUDENT", "TEACHER", "SCHOOL"]).optional(),
+  firstname: z.string().optional(),
+  lastname: z.string().optional(),
 });

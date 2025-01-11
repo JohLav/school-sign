@@ -60,7 +60,7 @@ export default function StudentDetails({
         } else {
           const errorData = await res.json();
           setError(
-            errorData.error || "An error occurred while fetching the student."
+            errorData.error || "An error occurred while fetching the student.",
           );
         }
       } catch (err) {
@@ -92,7 +92,7 @@ export default function StudentDetails({
         } else {
           const errorData = await res.json();
           setError(
-            errorData.error || "An error occurred while fetching classes."
+            errorData.error || "An error occurred while fetching classes.",
           );
         }
       } catch (err) {
@@ -143,7 +143,7 @@ export default function StudentDetails({
       } else {
         const errorData = await res.json();
         setError(
-          errorData.error || "An error occurred while updating the class."
+          errorData.error || "An error occurred while updating the class.",
         );
       }
     } catch (err) {
@@ -199,7 +199,9 @@ export default function StudentDetails({
                     className="absolute right-0 top-0 p-3"
                     href={`/school-dashboard/teacher//${teacher.id}/update`}
                   >
-                    <button><ModifyIcon/></button>
+                    <button>
+                      <ModifyIcon />
+                    </button>
                   </Link>
                 </Card>
                 <div className="flex flex-col items-center justify-center mt-10">
